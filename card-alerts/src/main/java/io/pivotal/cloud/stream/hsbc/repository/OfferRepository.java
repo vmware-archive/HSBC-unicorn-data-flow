@@ -11,9 +11,8 @@ import org.springframework.stereotype.Repository;
  * @author Vinicius Carvalho
  */
 
-@Repository
 public interface OfferRepository extends CrudRepository<Offer,Long>{
 
 
-	public List<Offer> findPendingOffers();
+
 }
