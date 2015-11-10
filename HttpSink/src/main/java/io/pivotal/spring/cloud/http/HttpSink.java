@@ -70,7 +70,7 @@ public class HttpSink {
 
         HttpEntity<PushNotification> request = new HttpEntity<PushNotification>(notification, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.GET, request, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
         
         logger.info("exchange return code: " + response.getStatusCode());
         logger.info("exchange return string: " + response.getBody());
