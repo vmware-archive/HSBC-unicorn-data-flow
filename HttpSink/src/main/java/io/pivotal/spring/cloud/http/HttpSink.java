@@ -3,6 +3,7 @@ package io.pivotal.spring.cloud.http;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.pivotal.spring.cloud.http.domain.Custom;
 import io.pivotal.spring.cloud.http.domain.Ios;
+import io.pivotal.spring.cloud.http.domain.Target;
 import io.pivotal.spring.cloud.http.domain.Message;
 import io.pivotal.spring.cloud.http.domain.Offer;
 import io.pivotal.spring.cloud.http.domain.PushNotification;
@@ -62,9 +63,14 @@ public class HttpSink {
                 */
         Message message = new Message();
         message.setBody("You have a new offer!");
+        
+        Target target = new Target();
+        target.setInteractiveOnly(false);
+        target.setPlatform("all");
+        
         PushNotification notification = new PushNotification();
         notification.setMessage(message);
-        
+        notification.setTarget(target);
         
         
 

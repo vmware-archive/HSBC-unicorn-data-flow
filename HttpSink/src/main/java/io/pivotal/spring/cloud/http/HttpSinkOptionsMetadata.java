@@ -5,6 +5,7 @@
  */
 package io.pivotal.spring.cloud.http;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -15,6 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties
 public class HttpSinkOptionsMetadata {
     private String credentials;
+    @NotNull
     private String uri;
     private String method = "POST";
 
