@@ -1,6 +1,5 @@
 package io.pivotal.cloud.stream.hsbc.domain;
 
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,9 +17,9 @@ public class Offer {
 	private Long offerId;
 	private Long customerId;
 
-	private Date issuedAt;
-	private Date expiresAt;
-	private Date acceptedAt;
+	private Long issuedAt;
+	private Long expiresAt;
+	private Long acceptedAt;
 
 
 	public Long getVoucherId() {
@@ -47,27 +46,27 @@ public class Offer {
 		this.customerId = customerId;
 	}
 
-	public Date getIssuedAt() {
+	public Long getIssuedAt() {
 		return issuedAt;
 	}
 
-	public void setIssuedAt(Date issuedAt) {
+	public void setIssuedAt(Long issuedAt) {
 		this.issuedAt = issuedAt;
 	}
 
-	public Date getExpiresAt() {
+	public Long getExpiresAt() {
 		return expiresAt;
 	}
 
-	public void setExpiresAt(Date expiresAt) {
+	public void setExpiresAt(Long expiresAt) {
 		this.expiresAt = expiresAt;
 	}
 
-	public Date getAcceptedAt() {
+	public Long getAcceptedAt() {
 		return acceptedAt;
 	}
 
-	public void setAcceptedAt(Date acceptedAt) {
+	public void setAcceptedAt(Long acceptedAt) {
 		this.acceptedAt = acceptedAt;
 	}
 }
