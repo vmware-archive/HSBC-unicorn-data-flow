@@ -17,7 +17,7 @@ out
 spring-shell.log
 target/
 test-output
-
+.mvn/*
 # Eclipse artifacts, including WTP generated manifests
 .classpath
 .project
