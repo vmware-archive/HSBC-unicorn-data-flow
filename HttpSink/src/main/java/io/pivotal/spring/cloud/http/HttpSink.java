@@ -38,53 +38,65 @@ public class HttpSink {
 
     @Autowired
     ObjectMapper mapper;
-    
+
     @ServiceActivator(inputChannel = Sink.INPUT)
     public void httpSink(Object payload) {
         logger.info("Received: " + payload);
-        String input = (String) payload;
+        String input = payload.toString();
         try {
-        Offer offer = mapper.readValue(input, Offer.class);
+            Offer offer = mapper.readValue(input, Offer.class);
 
-        HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
 
-        if (options.getCredentials() != null) {
-            String plainCreds = options.getCredentials();
-            byte[] plainCredsBytes = plainCreds.getBytes();
-            byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes);
-            String base64Creds = new String(base64CredsBytes);
+            if (options.getCredentials() != null) {
+                String plainCreds = options.getCredentials();
+                byte[] plainCredsBytes = plainCreds.getBytes();
+                byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes);
+                String base64Creds = new String(base64CredsBytes);
 
-            headers.add("Authorization", "Basic " + base64Creds);
-        }
-        /*Ios ios = new Ios();
-        ios.getAlert().put("body", "A new offer is available");
-        Custom custom = new Custom();
-        custom.setIos(ios);
-                */
-        Message message = new Message();
-        message.setBody("You have a new offer!");
-        
-        Target target = new Target();
-        target.setInteractiveOnly(false);
-        target.setPlatform("all");
-        
-        PushNotification notification = new PushNotification();
-        notification.setMessage(message);
-        notification.setTarget(target);
-        
-        
+                headers.add("Authorization", "Basic " + base64Creds);
+            }
+            /*Ios ios = new Ios();
+             ios.getAlert().put("body", "A new offer is available");
+             Custom custom = new Custom();
+             custom.setIos(ios);
+             */
+            Message message = new Message();
+            message.setBody("You have a new offer!");
 
-        HttpEntity<PushNotification> request = new HttpEntity<PushNotification>(notification, headers);
+            Target target = new Target();
+            target.setInteractiveOnly(false);
+            target.setPlatform("all");
 
-        ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
-        
-        logger.info("exchange return code: " + response.getStatusCode());
-        logger.info("exchange return string: " + response.getBody());
+            PushNotification notification = new PushNotification();
+            notification.setMessage(message);
+            notification.setTarget(target);
+
+            HttpEntity<PushNotification> request = new HttpEntity<PushNotification>(notification, headers);
+            logger.info("Sending request to %s with payload %s", options.getUri(), notification );
+            ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
+
+            logger.info("exchange return code %s with body %s", response.getStatusCode(),response.getBody() );
         } catch (IOException ioe) {
-            logger.error(ioe.getMessage());
+            //let's try with just payload.
+            logger.info("Trying with just payload, without conversion due to: " + ioe.getMessage());
+            HttpHeaders headers = new HttpHeaders();
+
+            if (options.getCredentials() != null) {
+                String plainCreds = options.getCredentials();
+                byte[] plainCredsBytes = plainCreds.getBytes();
+                byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes);
+                String base64Creds = new String(base64CredsBytes);
+
+                headers.add("Authorization", "Basic " + base64Creds);
+            }
+            HttpEntity<String> request = new HttpEntity<String>(input, headers);
+            logger.info("Sending request to %s with payload %s", options.getUri(), input );
+            
+            ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
+
+            logger.info("exchange return code %s with body %s", response.getStatusCode(),response.getBody() );
         }
     }
-
-
-
 }
+
