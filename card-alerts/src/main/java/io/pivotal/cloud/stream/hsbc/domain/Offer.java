@@ -1,25 +1,24 @@
 package io.pivotal.cloud.stream.hsbc.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * @author Vinicius Carvalho
  */
-@Entity
-@Table(name = "OFFER_VOUCHERS")
 public class Offer {
 
-	@Id
 	private Long voucherId;
+
 	private Long offerId;
+
 	private Long customerId;
 
-	private Long issuedAt;
-	private Long expiresAt;
-	private Long acceptedAt;
+	private Date issuedAt;
+
+	private Date expiresAt;
+
+	private Date acceptedAt;
 
 
 	public Long getVoucherId() {
@@ -46,27 +45,27 @@ public class Offer {
 		this.customerId = customerId;
 	}
 
-	public Long getIssuedAt() {
+	public Date getIssuedAt() {
 		return issuedAt;
 	}
 
-	public void setIssuedAt(Long issuedAt) {
+	public void setIssuedAt(Date issuedAt) {
 		this.issuedAt = issuedAt;
 	}
 
-	public Long getExpiresAt() {
+	public Date getExpiresAt() {
 		return expiresAt;
 	}
 
-	public void setExpiresAt(Long expiresAt) {
+	public void setExpiresAt(Date expiresAt) {
 		this.expiresAt = expiresAt;
 	}
 
-	public Long getAcceptedAt() {
+	public Date getAcceptedAt() {
 		return acceptedAt;
 	}
 
-	public void setAcceptedAt(Long acceptedAt) {
+	public void setAcceptedAt(Date acceptedAt) {
 		this.acceptedAt = acceptedAt;
 	}
 }
