@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.pivotal.spring.cloud</groupId>
-    <artifactId>HttpSink</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>io.pivotal.cloud.stream.hsbc</groupId>
+    <artifactId>notification-sink</artifactId>
+    <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>HttpSink</name>
-    <description>Http Sink stream module</description>
+    <name>Noification Sink</name>
+    <description>Push notifications Sink stream module</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

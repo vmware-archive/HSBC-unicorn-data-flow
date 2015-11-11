@@ -62,7 +62,7 @@ public class HttpSink {
              custom.setIos(ios);
              */
             Message message = new Message();
-            message.setBody("You have a new offer!");
+            message.setBody(input);
 
             Target target = new Target();
             target.setInteractiveOnly(false);
@@ -73,10 +73,10 @@ public class HttpSink {
             notification.setTarget(target);
 
             HttpEntity<PushNotification> request = new HttpEntity<PushNotification>(notification, headers);
-            logger.info("Sending request to %s with payload %s", options.getUri(), notification );
+            logger.info("Sending request to {} with payload {}", options.getUri(), notification );
             ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
 
-            logger.info("exchange return code %s with body %s", response.getStatusCode(),response.getBody() );
+            logger.info("exchange return code {} with body {}", response.getStatusCode(),response.getBody() );
         } catch (IOException ioe) {
             //let's try with just payload.
             logger.info("Trying with just payload, without conversion due to: " + ioe.getMessage());
@@ -91,11 +91,11 @@ public class HttpSink {
                 headers.add("Authorization", "Basic " + base64Creds);
             }
             HttpEntity<String> request = new HttpEntity<String>(input, headers);
-            logger.info("Sending request to %s with payload %s", options.getUri(), input );
+            logger.info("Sending request to {} with payload {}", options.getUri(), input );
             
             ResponseEntity<String> response = restTemplate.exchange(options.getUri(), HttpMethod.POST, request, String.class);
 
-            logger.info("exchange return code %s with body %s", response.getStatusCode(),response.getBody() );
+            logger.info("exchange return code {} with body {}", response.getStatusCode(),response.getBody() );
         }
     }
 }

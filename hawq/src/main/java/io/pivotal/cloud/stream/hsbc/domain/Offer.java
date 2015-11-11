@@ -1,24 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package io.pivotal.spring.cloud.http.domain;
+package io.pivotal.cloud.stream.hsbc.domain;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 /**
  * @author Vinicius Carvalho
  */
-
 public class Offer {
 
 	private Long voucherId;
+
 	private Long offerId;
+
 	private Long customerId;
 
 	private Date issuedAt;
+
 	private Date expiresAt;
+
 	private Date acceptedAt;
 
 
@@ -69,6 +68,4 @@ public class Offer {
 	public void setAcceptedAt(Date acceptedAt) {
 		this.acceptedAt = acceptedAt;
 	}
-
-
 }

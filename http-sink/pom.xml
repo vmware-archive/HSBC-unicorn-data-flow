@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.pivotal.cloud.stream.hsbc</groupId>
-	<artifactId>card-alerts</artifactId>
+	<artifactId>http-sink</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
-	<name>card-alerts</name>
-	<description>Card alerts stream</description>
+	<name>http-sink</name>
+	<description>HTTP Sink</description>
 	<organization>
 		<name>Pivotal Software, Inc.</name>
 		<url>http://www.spring.io</url>
@@ -98,48 +98,15 @@
 			<artifactId>spring-cloud-stream</artifactId>
 			<version>1.0.0.BUILD-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1201-jdbc41</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.1.1</version>
-		</dependency>
-		<!-- Lattice core dependency that activates cloud,lattice profiles when running on Lattice -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-lattice-core</artifactId>
-			<version>${spring-cloud-lattice.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<!-- Cloud connector dependencies -->
-		<!-- Lattice connector dependency to create services info from lattice -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-lattice-connector</artifactId>
-			<version>${spring-cloud-lattice.version}</version>
-			<optional>true</optional>
-		</dependency>
+
 		<!-- CF connector dependency to create services info from CF -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.integration</groupId>
-			<artifactId>spring-integration-jdbc</artifactId>
-			<version>4.2.1.RELEASE</version>
-		</dependency>
+
 		<!-- dependency to connect to detected cloud services -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
