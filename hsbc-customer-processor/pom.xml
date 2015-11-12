@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.pivotal.cloud.stream</groupId>
-	<artifactId>http-sink</artifactId>
+	<groupId>io.pivotal.cloud.stream.hsbc</groupId>
+	<artifactId>hsbc-customer-processor</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
-	<name>http-sink</name>
-	<description>HTTP Sink</description>
+	<name>hsbc-customer-processor</name>
+	<description>Customer Processor</description>
 	<organization>
 		<name>Pivotal Software, Inc.</name>
 		<url>http://www.spring.io</url>

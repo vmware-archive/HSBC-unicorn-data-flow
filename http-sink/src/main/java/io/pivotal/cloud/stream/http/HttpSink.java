@@ -31,6 +31,7 @@ public class HttpSink {
 
 	@ServiceActivator(inputChannel = Sink.INPUT)
 	public void dispatch(Message message) throws Exception{
+		logger.info("received message: {}", message);
 		String endpoint = message.getHeaders().get("ENDPOINT").toString();
 		String method = message.getHeaders().get("METHOD").toString().toUpperCase();
 		Map<String,String> headers = message.getHeaders().get("HTTP_HEADERS",Map.class);
@@ -39,7 +40,7 @@ public class HttpSink {
 			httpHeaders.add(key, headers.get(key));
 		}
 		HttpEntity request = new HttpEntity(message.getPayload(),httpHeaders);
-
+		logger.info("Sending message to {} using method {} with headers {} and payload {}", endpoint, method, headers, message.getPayload());
 		template.exchange(endpoint, HttpMethod.valueOf(method),request,String.class).addCallback(new ListenableFutureCallback() {
 			@Override
 			public void onFailure(Throwable throwable) {
