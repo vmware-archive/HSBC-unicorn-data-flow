@@ -11,7 +11,7 @@ import org.springframework.web.client.AsyncRestTemplate;
 @SpringBootApplication
 public class HttpSinkApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(HttpSinkApplication.class);
+		SpringApplication.run(HttpSinkApplication.class,args);
 	}
 
 	@Bean

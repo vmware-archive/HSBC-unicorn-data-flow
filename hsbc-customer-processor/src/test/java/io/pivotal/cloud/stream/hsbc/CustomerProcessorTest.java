@@ -43,7 +43,7 @@ public class CustomerProcessorTest {
 		Offer offer = new Offer();
 		offer.setOfferId(1L);
 		offer.setVoucherId(1L);
-		offer.setCustomerId(1L);
+		offer.setCustomerId(32767L);
 		processor.input().send(MessageBuilder.withPayload(mapper.writeValueAsString(offer)).build());
 
 		Thread.sleep(5000L);

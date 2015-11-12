@@ -58,7 +58,7 @@ public class CustomerProcessor {
 		httpHeaders.put(HttpHeaders.AUTHORIZATION,String.format("Basic %s", Base64Utils.encodeToString(properties.getCredentials().getBytes())));
 		headers.put("HTTP_HEADERS",httpHeaders);
 		String payload = mapper.writeValueAsString(pushNotification);
-		logger.info("Publishing message {} with headers {} to endpoint {}", payload, httpHeaders, properties.getEndpoint());
+		logger.info("Publishing message {} with headers {} to endpoint {}", payload, headers, properties.getEndpoint());
 
 		return MessageBuilder.createMessage(payload,new MessageHeaders(headers));
 
@@ -66,9 +66,8 @@ public class CustomerProcessor {
 
 
 	private Target getCustomerTarget(Offer offer){
-		Target target = null;
+		Target target = new Target();
 		if(offer.getCustomerId() != 32767){
-			target = new Target();
 			target.setDevices(new String[]{UUID.randomUUID().toString()});
 		}
 		return target;
