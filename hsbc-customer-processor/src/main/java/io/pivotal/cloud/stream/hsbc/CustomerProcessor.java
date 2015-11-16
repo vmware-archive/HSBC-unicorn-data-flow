@@ -68,7 +68,7 @@ public class CustomerProcessor {
 	private Target getCustomerTarget(Offer offer){
 		Target target = new Target();
 		if(offer.getCustomerId() != 32767){
-			target.setDevices(new String[]{UUID.randomUUID().toString()});
+			target.setDevices(new String[]{UUID.randomUUID().toString()});x
 		}
 		return target;
 	}
